@@ -93,7 +93,7 @@ data1sd =  0.6 # estimate based on impact peak (GRF peak SD was 0.38)
 data1_bl = power1d.geom.Continuum1D( quiet ) # baseline
 data1_sig0  = power1d.geom.Null( Q ) # null signal - needed for null power model
 data1_sig1  = power1d.geom.GaussianPulse( Q , q=8  , fwhm=10 , amp= 0.8 ) #signal
-data1_nse    = power1d.noise.SmoothGaussian( J , Q , mu = 0 , sigma = 0.05 , fwhm = 20 )
+data1_nse    = power1d.noise.SmoothGaussian( J , Q , mu = 0 , sigma = 0.6 , fwhm = 20 )
 data1_mod0   = power1d.models.DataSample( data1_bl, data1_sig0, data1_nse, J ) # null for power analysis
 data1_mod1   = power1d.models.DataSample( data1_bl, data1_sig1, data1_nse, J ) # alternative
 

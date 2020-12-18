@@ -171,7 +171,7 @@ data1sd =  0.6 # estimate based on impact peak (GRF peak SD was 0.38)
 data1_bl = power1d.geom.Continuum1D( quiet ) # baseline
 data1_sig0  = power1d.geom.Null( Q ) # null signal - needed for null power model
 data1_sig1  = power1d.geom.GaussianPulse( Q , q=8  , fwhm=10 , amp= 0.8 ) #signal
-data1_nse    = power1d.noise.SmoothGaussian( J , Q , mu = 0 , sigma = 0.05 , fwhm = 20 )
+data1_nse    = power1d.noise.SmoothGaussian( J , Q , mu = 0 , sigma = 0.6 , fwhm = 20 )
 data1_mod0   = power1d.models.DataSample( data1_bl, data1_sig0, data1_nse, J ) # null for power analysis
 data1_mod1   = power1d.models.DataSample( data1_bl, data1_sig1, data1_nse, J ) # alternative
 data1_es = effect_size(data1_mod1, data1_bl, data1_nse) # 1D effect size
@@ -179,7 +179,7 @@ data1_ss_0d = sample_size_1sample(data1_es[8],alpha=0.05, target_power=0.8, n_ra
 
 plot_dataset(data1_sig1, data1_bl, data1_nse, data1_mod0, data1_mod1, 0, 6)
 (data1_emod0, data1_emod1) = power_analysis(data1_mod0, data1_mod1)
-(data1_pwr_omni, data1_pwr_coi) = sample_size_calc(data1_mod0, data1_mod1, data1_emod0, data1_emod1,20)
+(data1_pwr_omni, data1_pwr_coi) = sample_size_calc(data1_mod0, data1_mod1, data1_emod0, data1_emod1,8)
 
 
 # Bovi 2011 - 40 participants
@@ -221,7 +221,7 @@ data3_ss_0d = sample_size_1sample(data3_es[52],alpha=0.05, target_power=0.8, n_r
 
 plot_dataset(data3_sig1, data3_bl, data3_nse, data3_mod0, data3_mod1, -50, 10)
 (data3_emod0, data3_emod1) = power_analysis(data3_mod0, data3_mod1)
-(data3_pwr_omni, data3_pwr_coi) = sample_size_calc(data3_mod0, data3_mod1, data3_emod0, data3_emod1,50) # What should q be for constant effect?
+(data3_pwr_omni, data3_pwr_coi) = sample_size_calc(data3_mod0, data3_mod1, data3_emod0, data3_emod1,52) # What should q be for constant effect?
 
 
 # Robinson - n=34
@@ -245,7 +245,7 @@ data4_ss_0d = sample_size_1sample(data4_es[20],alpha=0.05, target_power=0.8, n_r
 
 plot_dataset(data4_sig1, data4_bl, data4_nse, data4_mod0, data4_mod1, -2, 2)
 (data4_emod0, data4_emod1) = power_analysis(data4_mod0, data4_mod1)
-(data4_pwr_omni, data4_pwr_coi) = sample_size_calc(data4_mod0, data4_mod1, data4_emod0, data4_emod1,25) # What should q be for this effect?
+(data4_pwr_omni, data4_pwr_coi) = sample_size_calc(data4_mod0, data4_mod1, data4_emod0, data4_emod1,20) # What should q be for this effect?
 
 
 # Gomez 2017 - n=30
